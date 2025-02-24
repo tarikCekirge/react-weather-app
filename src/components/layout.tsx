@@ -1,23 +1,17 @@
 import { PropsWithChildren } from 'react'
+import Footer from './footer'
+import Header from './header'
 
 const Layout = ({ children }: PropsWithChildren) => {
     return (
         <>
-            <header className='py-6 '>
-                <div className="container">
-                    Header
-                </div>
-            </header>
+            <Header />
             <main className='flex-1 py-6 '>
                 <div className="container">
                     {children}
                 </div>
             </main>
-            <footer className='py-6 supports-[backdrop-filter]:bg-background/60'>
-                <div className="container">
-                    Footer
-                </div>
-            </footer>
+            <Footer />
         </>
     )
 }
