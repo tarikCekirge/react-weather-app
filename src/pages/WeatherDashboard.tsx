@@ -1,3 +1,4 @@
+import CurrentWeather from "@/components/current-weather"
 import WeatherSkeleton from "@/components/loading-sketlon"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
@@ -90,7 +91,18 @@ const WeatherDashboard = () => {
                     <RefreshCcw className={`size-4 ${weatherQuery.isFetching ? "animate-spin" : ""}`} />
                 </Button>
             </div>
-            {/* Current and Hourly wather */}
+
+            <div className="grid gap-6">
+                <div>
+                    <CurrentWeather data={weatherQuery.data} locationName={locationName} />
+                    {/* current weather */}
+                    {/* hourly temprature  */}
+                </div>
+                <div>
+                    {/* details */}
+                    {/* forecast */}
+                </div>
+            </div>
         </div>
     )
 }
