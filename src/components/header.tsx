@@ -6,7 +6,7 @@ const Header = () => {
     const { theme, setTheme } = useTheme();
     const isDark = theme === "dark"
     return (
-        <header className='py-6 sticky top-0 border-b backdrop-blur bg-background/95 supports-[backdrop-filter]:bg-background/50'>
+        <header className='py-6 sticky top-0 border-b backdrop-blur bg-background/95 supports-[backdrop-filter]:bg-background/50 z-50'>
             <div className="container flex items-center justify-between gap-4">
                 <Link to={"/"}>Weather App</Link>
                 {/* Search */}
