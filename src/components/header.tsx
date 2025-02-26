@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className='py-6 sticky top-0 border-b backdrop-blur bg-background/95 supports-[backdrop-filter]:bg-background/50 z-50'>
             <div className="container flex items-center justify-between gap-4">
-                <Link to={"/"} className="text-lg font-bold tracking-tighter text-green-600">React Weather</Link>
+                <Link to={"/"} className="text-lg font-bold tracking-tighter text-green-600 whitespace-nowrap">React Weather</Link>
                 {/* Search */}
                 <CitySearch />
                 <button onClick={() => setTheme(isDark ? "light" : "dark")} className={`flex items-center transition-transform duration-500 ${isDark ? "rotate-180" : "rotate-0"}`}>
