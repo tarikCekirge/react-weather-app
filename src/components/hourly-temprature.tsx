@@ -15,7 +15,6 @@ interface HourlyTempraturePRops {
     data: ForecastData
 }
 const HourlyTemprature = ({ data }: HourlyTempraturePRops) => {
-    console.log(data)
 
     const chardData = data.list.slice(0, 8).map((item) => ({
         time: format(new Date((item.dt * 1000)), "ha"),
