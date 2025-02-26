@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+
 import { Button } from './ui/button'
-import { CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator } from 'cmdk'
-import { Calendar, Smile, Calculator, User, CreditCard, Settings } from 'lucide-react';
-import { CommandShortcut } from './ui/command';
+import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from './ui/command';
+import { useState } from 'react';
+
 
 const CitySearch = () => {
     const [open, setOpen] = useState(false);
@@ -10,7 +10,6 @@ const CitySearch = () => {
     return (
         <>
             <Button onClick={() => setOpen(true)}>Search Cities...</Button>
-
 
             <CommandDialog open={open} onOpenChange={setOpen}>
                 <CommandInput placeholder="Type a command or search..." />
@@ -23,6 +22,7 @@ const CitySearch = () => {
                     </CommandGroup>
                 </CommandList>
             </CommandDialog>
+
         </>
     )
 }
