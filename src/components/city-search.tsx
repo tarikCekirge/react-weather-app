@@ -1,5 +1,5 @@
 
-import { Clock, Loader2, Search, XCircleIcon } from 'lucide-react';
+import { Clock, Loader2, Search, Star, XCircleIcon } from 'lucide-react';
 import { Button } from './ui/button'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from './ui/command';
 import { useState } from 'react';
@@ -7,6 +7,7 @@ import { useLocationSearch } from '@/hooks/use-weather';
 import { useNavigate } from 'react-router-dom';
 import { useSearchHistory } from '@/hooks/use-search-history';
 import { format } from "date-fns";
+import { useFavorites } from '@/hooks/useFavorite';
 
 
 const CitySearch = () => {
@@ -17,7 +18,7 @@ const CitySearch = () => {
 
     const { data: locations, isLoading } = useLocationSearch(query);
     const { history, clearHistory, addToHistory } = useSearchHistory();
-
+    const { favorites } = useFavorites();
 
     const handleSelect = (cityData: string) => {
         const [lat, lon, name, country] = cityData.split("|");
@@ -32,6 +33,7 @@ const CitySearch = () => {
         setOpen(false);
         navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
     };
+
     return (
         <>
             <div className=''></div>
@@ -46,9 +48,34 @@ const CitySearch = () => {
                         query.length > 2 && !isLoading && <CommandEmpty >No cities found.</CommandEmpty>
                     }
 
-                    {/* <CommandGroup heading="Favorites">
-                        <CommandItem>Calculator</CommandItem>
-                    </CommandGroup> */}
+                    {
+                        favorites.length > 0 &&
+
+
+                        <CommandGroup heading="Favorites" >
+                            <div className='flex items-center justify-between'>
+
+                            </div>
+                            {favorites.map((location) => (
+                                <CommandItem
+                                    key={location.id}
+
+                                >
+                                    <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                                    <span>{location.name}</span>
+                                    {location.state && (
+                                        <span className="text-sm text-muted-foreground">
+                                            , {location.state}
+                                        </span>
+                                    )}
+                                    <span className="text-sm text-muted-foreground">
+                                        , {location.country}
+                                    </span>
+                                </CommandItem>
+                            ))}
+                        </CommandGroup>
+
+                    }
 
 
                     {

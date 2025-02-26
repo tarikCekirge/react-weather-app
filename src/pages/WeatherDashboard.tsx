@@ -1,4 +1,5 @@
 import CurrentWeather from "@/components/current-weather"
+import FavoriteCities from "@/components/favorite-cities"
 import HourlyTemprature from "@/components/hourly-temprature"
 import WeatherSkeleton from "@/components/loading-sketlon"
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
@@ -83,7 +84,7 @@ const WeatherDashboard = () => {
 
     return (
         <div className="space-y-4">
-            {/* Favrite cities */}
+            <FavoriteCities />
             <div className="flex items-center justify-between">
                 <h1 className="text-xl font-bold tracking-tight">My Location</h1>
                 <Button variant={'outline'}
@@ -94,18 +95,17 @@ const WeatherDashboard = () => {
                     <RefreshCcw className={`size-4 ${weatherQuery.isFetching ? "animate-spin" : ""}`} />
                 </Button>
             </div>
-
             <div className="grid gap-6">
                 <div className="flex flex-col lg:flex-row gap-4">
                     <CurrentWeather data={weatherQuery.data} locationName={locationName} />
                     <HourlyTemprature data={forecastQuery.data} />
-                    {/* hourly temprature  */}
                 </div>
                 <div className="grid gap-6 md:grid-cols-2 items-start">
                     <WeatherDetails data={weatherQuery.data} />
                     <WeatherForeCast data={forecastQuery.data} />
                 </div>
             </div>
+
         </div>
     )
 }
